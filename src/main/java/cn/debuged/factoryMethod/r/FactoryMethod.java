@@ -1,4 +1,4 @@
-package cn.debuged.factory.r;
+package cn.debuged.factoryMethod.r;
 
 public class FactoryMethod {
     public static void main(String[] args) {
