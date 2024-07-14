@@ -12,50 +12,87 @@ public class FactoryMethod {
 class OperationFactory {
     static Operation createOperation(String operation) {
         Operation op;
-        IFactory factory;
+        IFactory factory = null;
         switch (operation) {
             case "+":
-                factory = new AddFactory();
+            case "-":
+            case "*":
+            case "/":
+                factory = new FactoryBasic();
+                break;
+            case "pow":
+            case "log":
+            default:
+                factory = new FactoryAdvanced();
+        }
+        op = factory.createOperation(operation);
+        return op;
+    }
+}
+
+class FactoryBasic implements IFactory {
+
+    @Override
+    public Operation createOperation(String operationType) {
+        Operation op = null;
+        switch (operationType) {
+            case "+":
+                op = new Add();
                 break;
             case "-":
-                factory = new SubFactory();
+                op = new Sub();
                 break;
             case "*":
-                factory = new MulFactory();
+                op = new Mul();
                 break;
             case "/":
-            default:
-                factory = new DivFactory();
+                op = new Div();
         }
-        op = factory.createOperation();
+        return op;
+    }
+}
+
+class FactoryAdvanced implements IFactory {
+
+    @Override
+    public Operation createOperation(String operationType) {
+        Operation op = null;
+        switch (operationType) {
+            case "pow":
+                op = new Pow();
+                break;
+            case "log":
+                op = new Log();
+                break;
+        }
         return op;
     }
 }
 
 interface IFactory {
-    Operation createOperation();
+    Operation createOperation(String operationType);
 }
 
-class AddFactory implements IFactory {
-    public Operation createOperation() {
-        return new Add();
-    }
-}
-
-class SubFactory implements IFactory {
-    public Operation createOperation() {
-        return new Sub();
-    }
-}
-
-class MulFactory implements IFactory {
-    public Operation createOperation() {
-        return new Mul();
-    }
-}
-
-class DivFactory implements IFactory {
-    public Operation createOperation() {
-        return new Div();
-    }
-}
+// class AddFactory implements IFactory {
+//     public Operation createOperation() {
+//         return new Add();
+//     }
+// }
+//
+// class SubFactory implements IFactory {
+//     public Operation createOperation() {
+//         return new Sub();
+//     }
+// }
+//
+// class MulFactory implements IFactory {
+//     public Operation createOperation() {
+//         return new Mul();
+//     }
+// }
+//
+// class DivFactory implements IFactory {
+//     public Operation createOperation() {
+//         return new Div();
+//     }
+// }
