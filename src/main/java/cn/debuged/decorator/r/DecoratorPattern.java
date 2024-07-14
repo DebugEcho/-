@@ -1,4 +1,4 @@
-package cn.debuged.decoratorPattern.r;
+package cn.debuged.decorator.r;
 
 public class DecoratorPattern {
     public static void main(String[] args) {

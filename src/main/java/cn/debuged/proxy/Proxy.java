@@ -1,6 +1,6 @@
 package cn.debuged.proxy;
 
-public class Prox {
+public class Proxy {
     public static void main(String[] args) {
         ProxySubject proxySubject = new ProxySubject(new RealSubject());
         proxySubject.request();
@@ -17,7 +17,7 @@ public class Prox {
         }
     }
     static class ProxySubject implements ISubject{
-        private RealSubject realSubject;
+        private final RealSubject realSubject;
 
         public ProxySubject(RealSubject realSubject) {
             this.realSubject = realSubject;
