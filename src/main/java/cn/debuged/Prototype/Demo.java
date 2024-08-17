@@ -19,7 +19,7 @@ public class Demo {
 }
 
 // 工作经理类
-class WorkExperience {
+class WorkExperience implements Cloneable{
     private String timeArea;
 
     public String getTimeArea() {
@@ -38,6 +38,16 @@ class WorkExperience {
 
     public void setCompany(String company) {
         this.company = company;
+    }
+
+    @Override
+    public WorkExperience clone() {
+        try {
+            // TODO: 复制此处的可变状态，这样此克隆就不能更改初始克隆的内部项
+            return (WorkExperience) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }
 
@@ -72,6 +82,7 @@ class Resume implements Cloneable {
         Resume obj = null;
         try {
             obj = (Resume) super.clone();
+            obj.workExperience = this.workExperience.clone();
         } catch (CloneNotSupportedException e) {
             System.err.println("不支持复制！");
         }
