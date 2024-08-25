@@ -1,4 +1,4 @@
-package cn.debuged.Prototype.r;
+package cn.debuged.prototype.r;
 
 public class Main {
     public static void main(String[] args) {

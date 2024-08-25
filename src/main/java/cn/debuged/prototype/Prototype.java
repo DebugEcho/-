@@ -1,4 +1,4 @@
-package cn.debuged.Prototype;
+package cn.debuged.prototype;
 
 /**
  * 原型模式
