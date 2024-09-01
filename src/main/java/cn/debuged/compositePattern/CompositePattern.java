@@ -24,7 +24,7 @@ public class CompositePattern {
         Leaf leaf2 = new Leaf("Leaf D");
         root.add(leaf2);
         root.remove(leaf2);
-        root.display(5);
+        root.display(0);
     }
 }
 
